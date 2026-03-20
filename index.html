@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AK Group Real Estate - إسطنبول</title>
+<meta name="description" content="AK Group - شقق للبيع والاستثمار في إسطنبول. عروض حصرية، استشارات مجانية، رد سريع. +50 عميل وأكثر من 100 وحدة مباعة.">
+<meta name="keywords" content="عقارات إسطنبول, شقق للبيع, استثمار عقاري, إسكان تركيا">
+<meta property="og:title" content="AK Group Real Estate - عقارات إسطنبول">
+<meta property="og:description" content="شقق جاهزة وقيد الإنشاء في إسطنبول بأفضل الأسعار">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>AK Group Real Estate - عقارات إسطنبول | شقق | استثمار</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -391,6 +397,44 @@
     .about-text p { font-size: 14px; line-height: 1.6; }
     .feature { font-size: 13px; }
   }
+
+  /* WhatsApp Floating Button */
+  .wa-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    text-decoration: none;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    animation: pulse-wa 2s infinite;
+    transition: all 0.3s ease;
+  }
+  .wa-float:hover {
+    background: #20ba5b;
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+  }
+  @keyframes pulse-wa {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  @media (max-width: 480px) {
+    .wa-float {
+      width: 50px;
+      height: 50px;
+      bottom: 15px;
+      right: 15px;
+      font-size: 22px;
+    }
+  }
 </style>
 </head>
 <body data-lang="ar">
@@ -429,6 +473,8 @@
     <h1 class="hero-title">AK <span>GROUP</span></h1>
     <p class="hero-sub ar-text">وكيل معتمد لأبرز المشاريع الإنشائية في إسطنبول — نقدم لكم أفخم الشقق السكنية والاستثمارية في قلب تركيا</p>
     <p class="hero-sub en-text" style="display:none">Authorized agent for Istanbul's finest construction projects — offering premium residential and investment apartments in the heart of Turkey</p>
+    <p style="font-size:13px;color:#C9A84C;margin-bottom:28px;" class="ar-text">✓ استشارات مجانية   ✓ عروض حصرية   ✓ رد سريع</p>
+    <p style="font-size:13px;color:#C9A84C;margin-bottom:28px;display:none;" class="en-text">✓ Free Consultations   ✓ Exclusive Offers   ✓ Quick Response</p>
     <div class="hero-btns">
       <a href="#properties" class="btn-primary ar-text">استكشف المشاريع</a>
       <a href="#properties" class="btn-primary en-text" style="display:none">Explore Projects</a>
@@ -837,5 +883,38 @@ function sendEmail(email) {
   window.open(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
 }
 </script>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/905527345463?text=مرحباً، مهتم بعروضكم العقارية في إسطنبول" target="_blank" class="wa-float" title="تواصل عبر واتساب" aria-label="WhatsApp Button">💬</a>
+
+<script>
+// Auto-detect language
+const userLang = navigator.language || navigator.userLanguage;
+let detectedLang = 'ar';
+
+if (userLang.startsWith('en')) {
+  detectedLang = 'en';
+}
+
+// Check if user has preferred language saved
+const savedLang = localStorage.getItem('ak-lang');
+if (savedLang) {
+  lang = savedLang;
+} else {
+  lang = detectedLang;
+  document.body.setAttribute('data-lang', lang);
+}
+
+// Update WhatsApp message based on language
+const waBtn = document.querySelector('.wa-float');
+if (waBtn) {
+  const messages = {
+    ar: 'مرحباً، مهتم بعروضكم العقارية في إسطنبول',
+    en: 'Hello, I am interested in your real estate offers in Istanbul'
+  };
+  waBtn.href = `https://wa.me/905527345463?text=${encodeURIComponent(messages[lang])}`;
+}
+</script>
+
 </body>
 </html>
