@@ -1,0 +1,12 @@
+{
+  "name": "ak-group-real-estate",
+  "version": "1.0.0",
+  "description": "AK Group Real Estate - Istanbul",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000"
+  },
+  "keywords": ["real-estate", "istanbul"],
+  "author": "AK Group",
+  "license": "MIT"
+}
