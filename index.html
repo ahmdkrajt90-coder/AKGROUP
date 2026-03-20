@@ -902,8 +902,16 @@ if (savedLang) {
   lang = savedLang;
 } else {
   lang = detectedLang;
-  document.body.setAttribute('data-lang', lang);
 }
+
+// Apply language on page load
+document.body.setAttribute('data-lang', lang);
+document.documentElement.setAttribute('lang', lang);
+document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+// Show/hide elements based on language
+document.querySelectorAll('.ar-text').forEach(el => el.style.display = lang === 'ar' ? '' : 'none');
+document.querySelectorAll('.en-text').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
 
 // Update WhatsApp message based on language
 const waBtn = document.querySelector('.wa-float');
