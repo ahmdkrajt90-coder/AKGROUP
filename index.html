@@ -260,6 +260,16 @@
     transform: translateX(4px);
     text-shadow: 0 0 8px rgba(201,168,76,0.3);
   }
+  .map-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+  }
+  .map-link a:hover {
+    transform: translateX(4px) scale(1.05);
+    color: var(--gold);
+  }
   .contact-icon { width: 44px; height: 44px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
   .contact-detail-title { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
   .contact-detail-val { font-size: 14px; color: var(--white); line-height: 1.7; }
@@ -479,7 +489,7 @@
         <div class="manager-contacts">
           <span><i class="fas fa-phone" style="margin-left:8px;color:var(--gold)"></i> +90 552 734 54 63</span>
           <a href="mailto:ak.group.real@gmail.com" style="color:var(--white);text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;"><i class="fas fa-envelope" style="color:var(--gold)"></i> <span style="border-bottom:1px dashed var(--gold);cursor:pointer;">ak.group.real@gmail.com</span></a>
-          <span><i class="fas fa-map-marker-alt" style="margin-left:8px;color:var(--gold)"></i> Esenyurt / Istanbul</span>
+          <a href="https://maps.google.com/?q=Metropole+Center+Esenyurt+Istanbul" target="_blank" rel="noopener noreferrer" style="color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;cursor:pointer;"><i class="fas fa-map-marker-alt" style="color:var(--gold)"></i> <span style="border-bottom:1px dashed var(--gold);padding-bottom:2px;">Esenyurt / Istanbul</span></a>
         </div>
       </div>
     </div>
@@ -696,7 +706,17 @@
         <div>
           <div class="contact-detail-title ar-text">العنوان</div>
           <div class="contact-detail-title en-text" style="display:none">Address</div>
-          <div class="contact-detail-val">Piri Reis Mha. Nazim Hikmet Bulvari Met.<br>Metropole Center Kat:1 E/19 Bina No:72<br>Esenyurt / Istanbul, Turkey</div>
+          <div class="contact-detail-val map-link">
+            <a href="https://maps.google.com/?q=Metropole+Center+Esenyurt+Istanbul" target="_blank" rel="noopener noreferrer" style="color:var(--white);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:2px;cursor:pointer;transition:all 0.3s;display:inline-block;">
+              <i class="fab fa-google" style="color:var(--gold);margin-left:4px;"></i> Google Maps
+            </a>
+            <br style="margin:6px 0;">
+            Piri Reis Mha. Nazim Hikmet Bulvari Met.<br>Metropole Center Kat:1 E/19 Bina No:72<br>Esenyurt / Istanbul, Turkey
+            <br style="margin:6px 0;">
+            <a href="maps://maps.apple.com/?q=Metropole+Center+Esenyurt+Istanbul" style="color:var(--gray);text-decoration:none;border-bottom:1px dashed var(--gold);padding-bottom:2px;cursor:pointer;transition:all 0.3s;display:inline-block;font-size:12px;">
+              <i class="fab fa-apple" style="color:var(--gold);margin-left:4px;"></i> Apple Maps
+            </a>
+          </div>
         </div>
       </div>
       <div class="social-links">
