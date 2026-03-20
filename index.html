@@ -246,6 +246,20 @@
   .contact { background: var(--dark); }
   .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
   .contact-detail { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .contact-detail a {
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .contact-detail a:hover {
+    color: var(--gold);
+    transform: translateX(4px);
+    text-shadow: 0 0 8px rgba(201,168,76,0.3);
+  }
   .contact-icon { width: 44px; height: 44px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
   .contact-detail-title { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
   .contact-detail-val { font-size: 14px; color: var(--white); line-height: 1.7; }
@@ -464,7 +478,7 @@
         <p style="font-size:13px;color:var(--gray);line-height:1.8;" class="en-text" style="display:none">Over 12 years of expertise in the Turkish real estate market with an extensive network of leading Istanbul developers.</p>
         <div class="manager-contacts">
           <span><i class="fas fa-phone" style="margin-left:8px;color:var(--gold)"></i> +90 552 734 54 63</span>
-          <span><i class="fas fa-envelope" style="margin-left:8px;color:var(--gold)"></i> ak.group.real@gmail.com</span>
+          <a href="mailto:ak.group.real@gmail.com" style="color:var(--white);text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;"><i class="fas fa-envelope" style="color:var(--gold)"></i> <span style="border-bottom:1px dashed var(--gold);cursor:pointer;">ak.group.real@gmail.com</span></a>
           <span><i class="fas fa-map-marker-alt" style="margin-left:8px;color:var(--gold)"></i> Esenyurt / Istanbul</span>
         </div>
       </div>
@@ -674,7 +688,7 @@
         <div>
           <div class="contact-detail-title ar-text">البريد الإلكتروني</div>
           <div class="contact-detail-title en-text" style="display:none">Email</div>
-          <div class="contact-detail-val">ak.group.real@gmail.com</div>
+          <a href="mailto:ak.group.real@gmail.com" style="color:var(--white);text-decoration:none;transition:all 0.3s;cursor:pointer;border-bottom:2px solid var(--gold);padding-bottom:2px;">ak.group.real@gmail.com</a>
         </div>
       </div>
       <div class="contact-detail">
