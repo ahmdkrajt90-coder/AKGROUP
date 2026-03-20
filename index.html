@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AK Group Real Estate - إسطنبول</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   :root {
     --gold: #C9A84C;
@@ -20,6 +21,10 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: 'Cairo', sans-serif; overflow-x: hidden; }
+
+  /* PERFORMANCE */
+  img { will-change: transform; }
+  section { contain: layout style paint; }
 
   /* LANG BAR */
   .lang-bar {
@@ -157,22 +162,73 @@
     color: var(--gray); cursor: pointer; transition: all 0.3s;
   }
   .filter-tab.active, .filter-tab:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
-  .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-  .prop-card { position: relative; overflow: hidden; cursor: pointer; }
+  .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .prop-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    transition: all 0.4s ease;
+    border-radius: 2px;
+  }
+  .prop-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(201,168,76,0.2);
+  }
   .prop-card:first-child { grid-column: span 2; }
-  .prop-img { width: 100%; height: 300px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .prop-img {
+    width: 100%; height: 300px; object-fit: cover; display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
   .prop-card:first-child .prop-img { height: 400px; }
-  .prop-card:hover .prop-img { transform: scale(1.06); }
+  .prop-card:hover .prop-img { transform: scale(1.12) rotate(1deg); }
   .prop-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(0deg, rgba(0,0,0,0.92) 0%, transparent 55%);
-    display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
+    background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(201,168,76,0.1) 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 32px;
+    transition: all 0.4s ease;
   }
-  .prop-type { font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
-  .prop-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-  .prop-loc { font-size: 12px; color: #aaa; margin-bottom: 12px; }
-  .prop-price { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--gold); font-weight: 700; }
-  .prop-badge { position: absolute; top: 18px; right: 18px; background: var(--gold); color: var(--black); font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 4px 12px; }
+  .prop-card:hover .prop-overlay {
+    background: linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(201,168,76,0.2) 100%);
+  }
+  .prop-type {
+    font-size: 11px; letter-spacing: 3px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    animation: slideInUp 0.6s ease 0.1s both;
+  }
+  .prop-name {
+    font-family: 'Playfair Display', serif; font-size: 22px;
+    font-weight: 700; margin-bottom: 6px; color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    animation: slideInUp 0.6s ease 0.2s both;
+  }
+  .prop-loc {
+    font-size: 13px; color: #ccc; margin-bottom: 14px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    animation: slideInUp 0.6s ease 0.3s both;
+  }
+  .prop-price {
+    font-family: 'Playfair Display', serif; font-size: 26px;
+    color: var(--gold); font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    animation: slideInUp 0.6s ease 0.4s both;
+  }
+  .prop-badge {
+    position: absolute; top: 18px; right: 18px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--black); font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; padding: 6px 14px;
+    box-shadow: 0 4px 12px rgba(201,168,76,0.4);
+    animation: bounce 0.8s ease;
+  }
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
 
   /* GALLERY */
   .gallery { background: var(--black); }
@@ -203,9 +259,26 @@
   .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
   .form-group textarea { height: 110px; resize: none; }
   .form-group select option { background: var(--dark3); }
-  .social-links { display: flex; gap: 12px; margin-top: 24px; }
-  .soc-btn { width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.3s; }
-  .soc-btn:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
+  .social-links { display: flex; gap: 14px; margin-top: 24px; flex-wrap: wrap; }
+  .soc-btn {
+    width: 48px; height: 48px; border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); text-decoration: none; font-weight: 700;
+    font-size: 18px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 50%; position: relative; overflow: hidden;
+  }
+  .soc-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--gold); border-radius: 50%;
+    z-index: -1; transform: scale(0);
+    transition: transform 0.4s ease;
+  }
+  .soc-btn:hover {
+    background: var(--gold); color: var(--black);
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 12px 24px rgba(201,168,76,0.3);
+  }
+  .soc-btn:hover::before { transform: scale(1); }
 
   /* FOOTER */
   footer { background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.15); padding: 60px; text-align: center; }
@@ -390,9 +463,9 @@
         <p style="font-size:13px;color:var(--gray);line-height:1.8;" class="ar-text">خبرة تتجاوز 12 عاماً في السوق العقاري التركي مع شبكة علاقات واسعة مع كبار المطورين في إسطنبول.</p>
         <p style="font-size:13px;color:var(--gray);line-height:1.8;" class="en-text" style="display:none">Over 12 years of expertise in the Turkish real estate market with an extensive network of leading Istanbul developers.</p>
         <div class="manager-contacts">
-          <span>📞 +90 552 734 54 63</span>
-          <span>✉️ ak.group.real@gmail.com</span>
-          <span>📍 Esenyurt / Istanbul</span>
+          <span><i class="fas fa-phone" style="margin-left:8px;color:var(--gold)"></i> +90 552 734 54 63</span>
+          <span><i class="fas fa-envelope" style="margin-left:8px;color:var(--gold)"></i> ak.group.real@gmail.com</span>
+          <span><i class="fas fa-map-marker-alt" style="margin-left:8px;color:var(--gold)"></i> Esenyurt / Istanbul</span>
         </div>
       </div>
     </div>
@@ -589,7 +662,7 @@
       <h2 class="section-title en-text" style="display:none">Let Us <span>Help You</span></h2>
       <div style="width:60px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:36px;"></div>
       <div class="contact-detail">
-        <div class="contact-icon">📞</div>
+        <div class="contact-icon"><i class="fas fa-phone"></i></div>
         <div>
           <div class="contact-detail-title ar-text">الهاتف / واتساب</div>
           <div class="contact-detail-title en-text" style="display:none">Phone / WhatsApp</div>
@@ -597,7 +670,7 @@
         </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-icon">✉️</div>
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
         <div>
           <div class="contact-detail-title ar-text">البريد الإلكتروني</div>
           <div class="contact-detail-title en-text" style="display:none">Email</div>
@@ -605,7 +678,7 @@
         </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-icon">📍</div>
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
         <div>
           <div class="contact-detail-title ar-text">العنوان</div>
           <div class="contact-detail-title en-text" style="display:none">Address</div>
@@ -613,9 +686,10 @@
         </div>
       </div>
       <div class="social-links">
-        <a href="https://www.facebook.com/share/1HkBoQsBzF/" target="_blank" class="soc-btn">f</a>
-        <a href="https://www.instagram.com/akgroup_real/" target="_blank" class="soc-btn">◉</a>
-        <a href="https://wa.me/905527345463" target="_blank" class="soc-btn">W</a>
+        <a href="https://www.facebook.com/share/1HkBoQsBzF/" target="_blank" class="soc-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/akgroup_real/" target="_blank" class="soc-btn"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/905527345463" target="_blank" class="soc-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:ak.group.real@gmail.com" target="_blank" class="soc-btn"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
     <div class="reveal">
