@@ -488,7 +488,7 @@
         <p style="font-size:13px;color:var(--gray);line-height:1.8;" class="en-text" style="display:none">Over 12 years of expertise in the Turkish real estate market with an extensive network of leading Istanbul developers.</p>
         <div class="manager-contacts">
           <span><i class="fas fa-phone" style="margin-left:8px;color:var(--gold)"></i> +90 552 734 54 63</span>
-          <a href="mailto:ak.group.real@gmail.com" style="color:var(--white);text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;"><i class="fas fa-envelope" style="color:var(--gold)"></i> <span style="border-bottom:1px dashed var(--gold);cursor:pointer;">ak.group.real@gmail.com</span></a>
+          <a href="mailto:ak.group.real@gmail.com?subject=استفسار من موقع AK Group&body=مرحباً" onclick="window.location.href='mailto:ak.group.real@gmail.com'; return false;" style="color:var(--white);text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;" title="اضغط لإرسال بريد"><i class="fas fa-envelope" style="color:var(--gold)"></i> <span style="border-bottom:1px dashed var(--gold);padding-bottom:2px;">ak.group.real@gmail.com</span></a>
           <a href="https://maps.google.com/?q=Metropole+Center+Esenyurt+Istanbul" target="_blank" rel="noopener noreferrer" style="color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;cursor:pointer;"><i class="fas fa-map-marker-alt" style="color:var(--gold)"></i> <span style="border-bottom:1px dashed var(--gold);padding-bottom:2px;">Esenyurt / Istanbul</span></a>
         </div>
       </div>
@@ -698,7 +698,7 @@
         <div>
           <div class="contact-detail-title ar-text">البريد الإلكتروني</div>
           <div class="contact-detail-title en-text" style="display:none">Email</div>
-          <a href="mailto:ak.group.real@gmail.com" style="color:var(--white);text-decoration:none;transition:all 0.3s;cursor:pointer;border-bottom:2px solid var(--gold);padding-bottom:2px;">ak.group.real@gmail.com</a>
+          <a href="mailto:ak.group.real@gmail.com?subject=استفسار من موقع AK Group&body=مرحباً" onclick="window.location.href='mailto:ak.group.real@gmail.com'; return false;" style="color:var(--white);text-decoration:none;transition:all 0.3s;cursor:pointer;border-bottom:2px solid var(--gold);padding-bottom:2px;display:inline-block;" title="اضغط لإرسال بريد">ak.group.real@gmail.com</a>
         </div>
       </div>
       <div class="contact-detail">
@@ -723,7 +723,7 @@
         <a href="https://www.facebook.com/share/1HkBoQsBzF/" target="_blank" class="soc-btn"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/akgroup_real/" target="_blank" class="soc-btn"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/905527345463" target="_blank" class="soc-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:ak.group.real@gmail.com" target="_blank" class="soc-btn"><i class="fas fa-envelope"></i></a>
+        <a href="mailto:ak.group.real@gmail.com" onclick="window.location.href='mailto:ak.group.real@gmail.com'; return false;" class="soc-btn" title="إرسال بريد" style="cursor:pointer;"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
     <div class="reveal">
@@ -828,6 +828,13 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Email function
+function sendEmail(email) {
+  const subject = 'استفسار من موقع AK Group';
+  const body = 'مرحباً باستفسار حول الخدمات';
+  window.open(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+}
 </script>
 </body>
 </html>
